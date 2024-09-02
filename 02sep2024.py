@@ -1,9 +1,18 @@
 class Solution(object):
     def chalkReplacer(self, chalk, k):
-        total = sum(chalk)
-    rem = k % total
-    for i, value in enumerate(chalk):
-        rem -= value
-        if rem < 0:
-            return i
-    return -1
+        allSum = 0
+        
+        for val in chalk:
+            allSum += val
+        
+        mod = k % allSum
+        
+        n = len(chalk)
+        
+        for i in range(n):
+            if chalk[i] > mod:
+                return i
+            
+            mod -= chalk[i]
+        
+        return mod
